@@ -10,7 +10,7 @@ const teacherController  = require('./controllers/teacher.controller');
 const classController = require('./controllers/class.controller');
 
 
-app.use(cors())
+app.use(cors());    
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.post('/register',register);
@@ -19,11 +19,11 @@ app.use('/users',userController);
 app.use('/teacher',teacherController);
 app.use('/class',classController);
 
-
-app.listen(process.env.PORT || 3000,async (req,res)=>{
+const port = process.env.PORT ;
+app.listen( port || 3000,async (req,res)=>{
     try {
         await connect();
-        console.log('Listening on port 8080');
+        console.log(`Listening on port ${process.env.PORT}`);
     } catch (error) {
         console.log('error:', error.message)
     }
