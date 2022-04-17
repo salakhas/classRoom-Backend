@@ -14,7 +14,7 @@ router.post('',authenticate,authorise(["admin"]),async(req,res)=>{
     }
 })
 
-router.get('',authenticate, async (req,res) => {
+router.get('', async (req,res) => {
     try{
         const page = req.query.page || 1;
         const size = req.query.size || 5;
@@ -75,7 +75,7 @@ router.get('/gender/:gender',authenticate, async (req,res) => {
 })*/
 
 
-router.get(':/id',authenticate, async (req,res) => {
+router.get(':/id', async (req,res) => {
     try{
         const teachers = await Teacher.find({_id: req.params.id}).lean().exec();
         res.status(200).send(teachers);
