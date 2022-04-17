@@ -4,8 +4,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 //const connect = require('./configs/db');
 
+const app = express();
 const port = process.env.PORT || 3000;
-const db = process.env.LINK
+const db = process.env.LINK;
 app.listen( port,async (req,res)=>{
     try {
         await mongoose.connect(db);
@@ -16,7 +17,6 @@ app.listen( port,async (req,res)=>{
 })
 
 var cors = require('cors')
-const app = express();
 
 
 const {register,login,newToken} = require('./controllers/auth.controller');
