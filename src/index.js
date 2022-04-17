@@ -17,7 +17,7 @@ app.use('/teacher',teacherController);
 app.use('/class',classController);
 
 
-app.listen(8080,async (req,res)=>{
+app.listen(process.env.PORT || 5000,async (req,res)=>{
     try {
         await connect();
         console.log('Listening on port 8080');
