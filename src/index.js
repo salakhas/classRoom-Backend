@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 const db = process.env.LINK;
 app.listen( port,async (req,res)=>{
     try {
-        await mongoose.connect(db);
+        await mongoose.connect(`${db}`);
         console.log(`Listening on port ${port}`);
     } catch (error) {
         console.log('error:', error.message)
