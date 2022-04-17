@@ -6,10 +6,10 @@ const mongoose = require('mongoose');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const db = process.env.LINK;
+const db = process.env.PASSWORD;
 app.listen( port,async (req,res)=>{
     try {
-        await mongoose.connect(`${db}`);
+        await mongoose.connect(`mongodb+srv://fullstackEval:${db}@cluster0.gplc8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
         console.log(`Listening on port ${port}`);
     } catch (error) {
         console.log('error:', error.message)
