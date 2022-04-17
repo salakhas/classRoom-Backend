@@ -14,7 +14,7 @@ router.post('',authenticate,authorise(["admin"]),async(req,res)=>{
     }
 })
 
-router.get('',authenticate, async (req,res) => {
+router.get('', async (req,res) => {
     try{
         
         const classes = await Class.find()
@@ -55,7 +55,7 @@ router.get('/count',async(req,res)=>{
     }
 })
 
-router.get(':/id',authenticate, async (req,res) => {
+router.get(':/id', async (req,res) => {
     try{
         const classes = await Class.find({_id: req.params.id})
         .populate({
