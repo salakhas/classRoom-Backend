@@ -75,8 +75,9 @@ router.get('/gender/:gender',authenticate, async (req,res) => {
 })*/
 
 
-router.get(':/id', async (req,res) => {
+router.get('/:id', async (req,res) => {
     try{
+        console.log("Hi this is backend:",req.params.id)
         const teachers = await Teacher.find({_id: req.params.id}).lean().exec();
         res.status(200).send(teachers);
     }
