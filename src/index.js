@@ -1,19 +1,23 @@
 const express = require('express');
+require("dotenv").config();
 const bodyParser = require('body-parser');
-var cors = require('cors')
-const app = express();
+const mongoose = require('mongoose');
+//const connect = require('./configs/db');
 
-const connect = require('./configs/db');
-
-const port = process.env.PORT ;
-app.listen( port || 3000,async (req,res)=>{
+const port = process.env.PORT || 3000;
+const db = process.env.LINK
+app.listen( port,async (req,res)=>{
     try {
-        await connect();
-        console.log(`Listening on port ${process.env.PORT}`);
+        await mongoose.connect(db);
+        console.log(`Listening on port ${port}`);
     } catch (error) {
         console.log('error:', error.message)
     }
 })
+
+var cors = require('cors')
+const app = express();
+
 
 const {register,login,newToken} = require('./controllers/auth.controller');
 const userController = require('./controllers/user.controller');
