@@ -70,7 +70,7 @@ router.get(':/id', async (req,res) => {
     }
 })
 
-router.patch('',authenticate,authorise(["admin"]),async(req,res)=>{
+router.patch('/:id',authenticate,authorise(["admin"]),async(req,res)=>{
     try {
         const classes = await Class.findByIdAndUpdate(req.params.id,req.body,{new:true});
         return res.status(201).send(classes);
